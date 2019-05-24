@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<title>Millennial Spending - Knappenomics</title>
+<meta property="og:title" content="Millennial Spending - Knappenomics">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/clayknappen">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/ClayKnapps">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">Millennial Spending</h1>
+
+    
+    <span class="article-date">2019-05-24</span>
+    
+
+    <div class="article-content">
+      
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/d3/d3.min.js"></script>
+<script src="/rmarkdown-libs/sankey/sankey.js"></script>
+<script src="/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js"></script>
+
+
+<div id="sankey-diagrams" class="section level1">
+<h1>Sankey Diagrams</h1>
+<p><a href="https://en.wikipedia.org/wiki/Sankey_diagram">Sankey Diagrams</a> are a popular way of showing flows. Lately they’ve become pretty popular for showing budgets since they allow you to show the hierarchical relationships and proportions within groups pretty intuitively. Below, I just wanted to provide a really quick example of one of these using data from the <a href="www.bls.gov/cex">Consumer Expenditure Surveys</a>. Speifically, the data used come from the <a href="https://www.bls.gov/cex/2017/combined/gener.pdf">2017 Generational table</a> to show how the average Millennial spends their money.</p>
+<p>There are a couple of caveats:</p>
+<ol style="list-style-type: decimal">
+<li>Alcohol was combined with food to make a higher-level food and drinks category</li>
+<li>Reading was moved into the entertainment category</li>
+<li>Several smaller categories were regrouped into a larger miscellaneous category</li>
+</ol>
+<p>Other than that the data match exactly what’s in the official table. Enjoy!</p>
+<div id="htmlwidget-1" style="width:1000px;height:800px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"links":{"source":[0,1,1,1,0,5,5,5,5,5,0,11,11,11,11,11,0,17,17,17,17,0,22,22,22,22,0,27,27,27,27,27,0,33,33,33,33,33,0,39,39],"target":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41],"value":[7424,3680,3223,521,18309,11566,2996,1523,495,1729,1908,443,616,152,410,287,8629,3825,1919,610,2275,2894,2043,565,201,85,2559,579,782,629,63,506,3863,616,1457,303,842,645,5720,172,5548],"group":["Food/drink","Food/drink","Food/drink","Food/drink","Housing","Housing","Housing","Housing","Housing","Housing","Apparel","Apparel","Apparel","Apparel","Apparel","Apparel","Transportation","Transportation","Transportation","Transportation","Transportation","Healthcare","Healthcare","Healthcare","Healthcare","Healthcare","Entertainment","Entertainment","Entertainment","Entertainment","Entertainment","Entertainment","Misc","Misc","Misc","Misc","Misc","Misc","Personal Insurance/pensions","Personal Insurance/pensions","Personal Insurance/pensions"]},"nodes":{"name":["Total","Food/drink","At home","Away from home","Alcohol","Housing","Shelter","Utilities","Operations","Supplies","Furnishings","Apparel","Men/boys","Women/girls","Infants","Footwear","Other","Transportation","Vehicle purchase","Gas/fuels","Public transit","Other","Healthcare","Insurance","Serivces","Drugs","Supplies","Entertainment","Fees/admissions","Audio/visual equipment/services","Pets/toys/hobbies","Reading","Other","Misc","Personal care products/services","Education","Tobacco/smoking products","Contributions","Other","Personal Insurance/pensions","Insurance","Social Security/pensions"],"group":["Total","Food/drink","Food/drink","Food/drink","Food/drink","Housing","Housing","Housing","Housing","Housing","Housing","Apparel","Apparel","Apparel","Apparel","Apparel","Apparel","Transportation","Transportation","Transportation","Transportation","Transportation","Healthcare","Healthcare","Healthcare","Healthcare","Healthcare","Entertainment","Entertainment","Entertainment","Entertainment","Entertainment","Entertainment","Misc","Misc","Misc","Misc","Misc","Misc","Personal Insurance/pensions","Personal Insurance/pensions","Personal Insurance/pensions"]},"options":{"NodeID":"name","NodeGroup":"group","LinkGroup":"group","colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":12,"fontFamily":null,"nodeWidth":30,"nodePadding":10,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":true}},"evals":[],"jsHooks":[]}</script>
+<p>The Sankey diagram was created using the very helpful R package <a href="https://christophergandrud.github.io/networkD3/">networkD3</a></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+
