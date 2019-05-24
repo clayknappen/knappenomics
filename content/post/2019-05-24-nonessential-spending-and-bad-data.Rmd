@@ -1,0 +1,76 @@
+---
+title: Nonessential Spending and Bad Data
+author: Clayton Knappenberger
+date: '2019-05-24'
+categories:
+  - consumption
+tags:
+  - bad data
+  - consumption
+slug: nonessential-spending-and-bad-data
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+You've probably seen a headline making its way around the internet: "Americans spend \$18,000 a year on nonessentials!" The Motley Fool via USA Today recently published their own version ["You don't need that: Average American spends almost \$18,000 a year on nonessentials."](https://www.usatoday.com/story/money/2019/05/07/americans-spend-thousands-on-nonessentials/39450207/) Unfortunately, I haven't been able to find a lot of information about where this particular factoid came from, but most sources agree that it comes from a poll conducted by OnePoll and paid for by the insurance company Ladder. The only other bits of detail I've been able to gather are that it was a survey of 2,000 adults about their spending on "essential" vs "nonessential" items and about respondents' feelings about their financial decisions. I spent some time on OnePoll's website to see if I could find more information about the actual survey (like the actual survey questions, and how they summarized responses), but alas, I couldn't find anything. So, if you have more data on these data, please let me know!
+
+So first things first, the whole survey is obviously just part of Ladder's [marketing strategy for selling life insurance](https://www.swnsdigital.com/2019/05/americans-spend-at-least-18000-a-year-on-these-non-essential-costs/). Apparently, the survey was conducted for National Life Insurance Day (which I refuse to believe is a real thing), and here's what Ladder's co-founder had to say about the survey results, "Trading off a couple of smaller short-term purchases per month can support a monthly policy payment. It can give you the longer term satisfaction that comes from making sure your family is protected." The basic idea is to collect data that show people spend a lot on "nonessentials" and argue that you should buy life insurance instead because it's "essential" and btw Ladder conveniently sells life insurance. So I'm not really sure why people are taking this seriously at all. So it goes.
+
+Rightfully, a lot of the [pushback](https://www.bustle.com/p/americans-may-spend-18000-on-nonessentials-per-year-but-the-term-nonessential-is-the-real-problem-17855774) on this narrative has been about what constitutes "essential" and "nonessential" spending. That's fair, and I agree with it, so I'm taking a different approach. I think the actual numbers are bogus, so I'm going to outline what my specific gripes are and hopefully provide something that better.  
+
+
+## Grievance, the first - faulty arithmetic 
+Again, there isn't a lot of data about these data, but there is a table that accompanies most of the articles about this survey. 
+
+```{r, echo=FALSE}
+df = data.frame(Item = c("Restaurant meals", "Drinks", "Takeout/delivery", "Buying lunch", "Impulse purchases",
+                         "Rideshares", "Personal grooming", "Subscription boxes", "Cable", "Online shopping",
+                         "Gym classes/memberships", "Paid apps", "TV or movie streaming", "Music streaming",
+                         "Coffee", "Bottled water"), 
+                cost = c(209.38, 188.68, 177.88, 173.62, 108.97, 96.11, 94.25, 93.96, 90.57, 84.11, 72.53, 23.24,
+                         23.09, 22.41, 20.25, 17.47))
+
+df
+```
+
+If you add these monthly averages up, you get `r scales::dollar(sum(df$cost))` per month in nonessential spending. Then if you mutliply that by 12, you get something close to $18,000 annually, and so a headline is born! There's just one problem: you can't add these averages like that. First, the categories probably overlap. Consider "restaurant meals" vs "buying lunch." What if I bought my lunch at a restaurant? Or what about "impulse purchases" vs "online shopping?" Personally, the majority of my impulse purchases are online, and it's likely that I'm not the only person who would be confused by this. Without access to the actual survey questions, I can't say definitively that there's overlap between the categories, but just based on how they present the data, it doesn't look good. If there is overlap, then you can't add these categories together because you just end up counting the same dollars twice. Just to drive home this danger, if we assume that people who bought their lunch had to do it at either a restaurant or from takeout/delivery then all of the \$173.62 reported in the buying lunch category was double counted and you end up overestimating the amount spent on "nonessentials" by around \$2,100. If things like online shopping, subscription boxes, and impulese purchases also overlap, then your original \$18,000 starts to disappear pretty quickly. 
+
+A subtler, problem is that these numbers may be the average of those who reported a purchase and not really a straight average. Say for example, you have five friends Song, James, Kerstie, Reggy, and Tom and you want to know how much people spend on alcohol. You could ask your friends how much they spend and they may tell you something like this:
+
+```{r, echo=FALSE}
+df = data.frame(Friend = c("Song", "James", "Kerstie", "Reggy", "Tom"), 
+                Amount = c(40, 0, 0, 55, 24))
+df
+```
+
+Notice how James and Kerstie don't spend anything on alcohol? Well it's because they don't drink. The most straightforward thing to do would be to add them up anyway because some people don't drink and it wouldn't be accurate to call a number the average if you didn't everyone. Doing this gives you \$23.80 on average. On the other hand, you could very well decide that you're only interested in the amount that people who do drink spend on alcohol. There's nothing wrong with taking this approach, but it does mean that you have to go to greater lengths to clarify that that's what you're doing. The average of those who drink in this example is about \$39.67, which is higher than the straight average because it doesn't include people who said they don't spend anything on alcohol. 
+
+Bringing it back to the survey results, I have a hard time believing that the average American really spends \$93.96 on subscription boxes each month. The reason I have a hard time believing this is because I don't believe most Americans spend *anything* on subscription boxes. Assume for a moment that 25\% of people get monthly subscription boxes (which honestly seems like a pretty high percentage to me). Since the survey had 2,000 respondents, that means the other 75\% had to report an average of \$375.84 per month to get \$93.96 as the simple average. That number gets higher if you believe the true percentage of people who buy subscription boxes is less than 25\% and it gets smaller if you believe the percent reporting is higher.  
+
+$$(0.75 \times 0) + (0.25 \times y) = 93.96$$
+$$y = \frac{93.96}{0.25}$$
+$$y = 375.84$$ 
+
+Like I said before, there's nothing wrong with calculating an average of only those who reported spending anything, but you can't have your cake and eat it too. If you want to calculate the average of those who reported, you can't then add the averages up like you calculated the average including those who didn't spend anything. This especially matters for budgeting decisions where people actively choose what and what *not* to consume. If you have people who choose to abstain from going out to restaurants so that they can afford something else, then you're misrepresenting what the average consumer spends money on if you try adding up averages of those who only reported an expenditure. 
+
+Again, without more detail on the survey, I can't say for certain that this is what they actually did, but the numbers do seem off.
+
+## Grievance, the second - there was better data all along
+To be clear, I don't see a lot of benefit to arbitrarily classifying some spending as "essential" or "nonessential." As many have already pointed out, the discussion often ends up being discriminatory toward people at the bottom of the income distribution. When a high profile CEO buys lunch, no one blinks, but when a minimum wage fast food worker does the same thing it's seen as wasteful and irresponsible.  
+
+But at the same time, if you are genuinely interested in exploring how much people spend on essentials vs nonessentials, you don't have to look any farther than the Bureau of Labor Statistics to find data that is both higher quality and better documented. Plus, you don't have to worry about someone trying to sell you life insurance. [The Consumer Expenditure Surveys](www.bls.gov/cex) provide tables and public-use microdata on expenditures, income, and demographics for the United States going back to 1989. You will have to do a little bit more work, including defining what nonessential expenditures are, but the end result is certainly more credible than what's been floating around the internet. 
+
+A good place to start then is this [2017 average expenditures table](https://www.bls.gov/cex/2017/combined/age.pdf) broken down by the age of the reference person. It's already in annual amounts so we can just add up the categories that we consider to be nonessential. As a first pass, you might consider the following categories as nonessential:
+
+```{r, echo=FALSE}
+df = data.frame(Item = c("Food away from home", "Alcoholic beverages", "Entertainment",
+                         "Personal care products and services", "Reading", 
+                         "Tobacco products and smoking supplies", "Contributions"), 
+                Amount = c(3365, 558, 3203, 762, 110, 332, 1873))
+df
+```
+
+For a total of `r scales::dollar(sum(df$Amount))` which is a lot less than the above \$18,000. 

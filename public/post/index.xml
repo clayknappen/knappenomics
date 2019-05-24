@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Knappenomics</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Knappenomics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nonessential Spending and Bad Data</title>
+      <link>/2019/05/24/nonessential-spending-and-bad-data/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/05/24/nonessential-spending-and-bad-data/</guid>
+      <description>IntroductionYou’ve probably seen a headline making its way around the internet: “Americans spend $18,000 a year on nonessentials!” The Motley Fool via USA Today recently published their own version “You don’t need that: Average American spends almost $18,000 a year on nonessentials.” Unfortunately, I haven’t been able to find a lot of information about where this particular factoid came from, but most sources agree that it comes from a poll conducted by OnePoll and paid for by the insurance company Ladder.</description>
+    </item>
+    
+  </channel>
+</rss>
