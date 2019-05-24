@@ -12,6 +12,7 @@ slug: nonessential-spending-and-bad-data
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
 ```
 
 ## Introduction
@@ -32,8 +33,8 @@ df = data.frame(Item = c("Restaurant meals", "Drinks", "Takeout/delivery", "Buyi
                          "Coffee", "Bottled water"), 
                 cost = c(209.38, 188.68, 177.88, 173.62, 108.97, 96.11, 94.25, 93.96, 90.57, 84.11, 72.53, 23.24,
                          23.09, 22.41, 20.25, 17.47))
-
-df
+kable(df) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F)
 ```
 
 If you add these monthly averages up, you get `r scales::dollar(sum(df$cost))` per month in nonessential spending. Then if you mutliply that by 12, you get something close to $18,000 annually, and so a headline is born! There's just one problem: you can't add these averages like that. First, the categories probably overlap. Consider "restaurant meals" vs "buying lunch." What if I bought my lunch at a restaurant? Or what about "impulse purchases" vs "online shopping?" Personally, the majority of my impulse purchases are online, and it's likely that I'm not the only person who would be confused by this. Without access to the actual survey questions, I can't say definitively that there's overlap between the categories, but just based on how they present the data, it doesn't look good. If there is overlap, then you can't add these categories together because you just end up counting the same dollars twice. Just to drive home this danger, if we assume that people who bought their lunch had to do it at either a restaurant or from takeout/delivery then all of the \$173.62 reported in the buying lunch category was double counted and you end up overestimating the amount spent on "nonessentials" by around \$2,100. If things like online shopping, subscription boxes, and impulese purchases also overlap, then your original \$18,000 starts to disappear pretty quickly. 
@@ -43,7 +44,8 @@ A subtler, problem is that these numbers may be the average of those who reporte
 ```{r, echo=FALSE}
 df = data.frame(Friend = c("Song", "James", "Kerstie", "Reggy", "Tom"), 
                 Amount = c(40, 0, 0, 55, 24))
-df
+kable(df) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F)
 ```
 
 Notice how James and Kerstie don't spend anything on alcohol? Well it's because they don't drink. The most straightforward thing to do would be to add them up anyway because some people don't drink and it wouldn't be accurate to call a number the average if you didn't everyone. Doing this gives you \$23.80 on average. On the other hand, you could very well decide that you're only interested in the amount that people who do drink spend on alcohol. There's nothing wrong with taking this approach, but it does mean that you have to go to greater lengths to clarify that that's what you're doing. The average of those who drink in this example is about \$39.67, which is higher than the straight average because it doesn't include people who said they don't spend anything on alcohol. 
@@ -70,7 +72,8 @@ df = data.frame(Item = c("Food away from home", "Alcoholic beverages", "Entertai
                          "Personal care products and services", "Reading", 
                          "Tobacco products and smoking supplies", "Contributions"), 
                 Amount = c(3365, 558, 3203, 762, 110, 332, 1873))
-df
+kable(df) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F)
 ```
 
 For a total of `r scales::dollar(sum(df$Amount))` which is a lot less than the above \$18,000. 
