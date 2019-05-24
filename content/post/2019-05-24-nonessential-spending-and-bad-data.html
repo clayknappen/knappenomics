@@ -10,6 +10,7 @@ tags:
 slug: nonessential-spending-and-bad-data
 ---
 
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
 <div id="introduction" class="section level2">
@@ -21,31 +22,204 @@ slug: nonessential-spending-and-bad-data
 <div id="grievance-the-first---faulty-arithmetic" class="section level2">
 <h2>Grievance, the first - faulty arithmetic</h2>
 <p>Again, there isn’t a lot of data about these data, but there is a table that accompanies most of the articles about this survey.</p>
-<pre><code>##                       Item   cost
-## 1         Restaurant meals 209.38
-## 2                   Drinks 188.68
-## 3         Takeout/delivery 177.88
-## 4             Buying lunch 173.62
-## 5        Impulse purchases 108.97
-## 6               Rideshares  96.11
-## 7        Personal grooming  94.25
-## 8       Subscription boxes  93.96
-## 9                    Cable  90.57
-## 10         Online shopping  84.11
-## 11 Gym classes/memberships  72.53
-## 12               Paid apps  23.24
-## 13   TV or movie streaming  23.09
-## 14         Music streaming  22.41
-## 15                  Coffee  20.25
-## 16           Bottled water  17.47</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Item
+</th>
+<th style="text-align:right;">
+cost
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Restaurant meals
+</td>
+<td style="text-align:right;">
+209.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Drinks
+</td>
+<td style="text-align:right;">
+188.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Takeout/delivery
+</td>
+<td style="text-align:right;">
+177.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buying lunch
+</td>
+<td style="text-align:right;">
+173.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Impulse purchases
+</td>
+<td style="text-align:right;">
+108.97
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rideshares
+</td>
+<td style="text-align:right;">
+96.11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Personal grooming
+</td>
+<td style="text-align:right;">
+94.25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Subscription boxes
+</td>
+<td style="text-align:right;">
+93.96
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cable
+</td>
+<td style="text-align:right;">
+90.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Online shopping
+</td>
+<td style="text-align:right;">
+84.11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gym classes/memberships
+</td>
+<td style="text-align:right;">
+72.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paid apps
+</td>
+<td style="text-align:right;">
+23.24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TV or movie streaming
+</td>
+<td style="text-align:right;">
+23.09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Music streaming
+</td>
+<td style="text-align:right;">
+22.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Coffee
+</td>
+<td style="text-align:right;">
+20.25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bottled water
+</td>
+<td style="text-align:right;">
+17.47
+</td>
+</tr>
+</tbody>
+</table>
 <p>If you add these monthly averages up, you get $1,496.52 per month in nonessential spending. Then if you mutliply that by 12, you get something close to $18,000 annually, and so a headline is born! There’s just one problem: you can’t add these averages like that. First, the categories probably overlap. Consider “restaurant meals” vs “buying lunch.” What if I bought my lunch at a restaurant? Or what about “impulse purchases” vs “online shopping?” Personally, the majority of my impulse purchases are online, and it’s likely that I’m not the only person who would be confused by this. Without access to the actual survey questions, I can’t say definitively that there’s overlap between the categories, but just based on how they present the data, it doesn’t look good. If there is overlap, then you can’t add these categories together because you just end up counting the same dollars twice. Just to drive home this danger, if we assume that people who bought their lunch had to do it at either a restaurant or from takeout/delivery then all of the $173.62 reported in the buying lunch category was double counted and you end up overestimating the amount spent on “nonessentials” by around $2,100. If things like online shopping, subscription boxes, and impulese purchases also overlap, then your original $18,000 starts to disappear pretty quickly.</p>
 <p>A subtler, problem is that these numbers may be the average of those who reported a purchase and not really a straight average. Say for example, you have five friends Song, James, Kerstie, Reggy, and Tom and you want to know how much people spend on alcohol. You could ask your friends how much they spend and they may tell you something like this:</p>
-<pre><code>##    Friend Amount
-## 1    Song     40
-## 2   James      0
-## 3 Kerstie      0
-## 4   Reggy     55
-## 5     Tom     24</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Friend
+</th>
+<th style="text-align:right;">
+Amount
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Song
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+James
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kerstie
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Reggy
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tom
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+</tbody>
+</table>
 <p>Notice how James and Kerstie don’t spend anything on alcohol? Well it’s because they don’t drink. The most straightforward thing to do would be to add them up anyway because some people don’t drink and it wouldn’t be accurate to call a number the average if you didn’t everyone. Doing this gives you $23.80 on average. On the other hand, you could very well decide that you’re only interested in the amount that people who do drink spend on alcohol. There’s nothing wrong with taking this approach, but it does mean that you have to go to greater lengths to clarify that that’s what you’re doing. The average of those who drink in this example is about $39.67, which is higher than the straight average because it doesn’t include people who said they don’t spend anything on alcohol.</p>
 <p>Bringing it back to the survey results, I have a hard time believing that the average American really spends $93.96 on subscription boxes each month. The reason I have a hard time believing this is because I don’t believe most Americans spend <em>anything</em> on subscription boxes. Assume for a moment that 25% of people get monthly subscription boxes (which honestly seems like a pretty high percentage to me). Since the survey had 2,000 respondents, that means the other 75% had to report an average of $375.84 per month to get $93.96 as the simple average. That number gets higher if you believe the true percentage of people who buy subscription boxes is less than 25% and it gets smaller if you believe the percent reporting is higher.</p>
 <p><span class="math display">\[(0.75 \times 0) + (0.25 \times y) = 93.96\]</span>
@@ -59,13 +233,75 @@ slug: nonessential-spending-and-bad-data
 <p>To be clear, I don’t see a lot of benefit to arbitrarily classifying some spending as “essential” or “nonessential.” As many have already pointed out, the discussion often ends up being discriminatory toward people at the bottom of the income distribution. When a high profile CEO buys lunch, no one blinks, but when a minimum wage fast food worker does the same thing it’s seen as wasteful and irresponsible.</p>
 <p>But at the same time, if you are genuinely interested in exploring how much people spend on essentials vs nonessentials, you don’t have to look any farther than the Bureau of Labor Statistics to find data that is both higher quality and better documented. Plus, you don’t have to worry about someone trying to sell you life insurance. <a href="www.bls.gov/cex">The Consumer Expenditure Surveys</a> provide tables and public-use microdata on expenditures, income, and demographics for the United States going back to 1989. You will have to do a little bit more work, including defining what nonessential expenditures are, but the end result is certainly more credible than what’s been floating around the internet.</p>
 <p>A good place to start then is this <a href="https://www.bls.gov/cex/2017/combined/age.pdf">2017 average expenditures table</a> broken down by the age of the reference person. It’s already in annual amounts so we can just add up the categories that we consider to be nonessential. As a first pass, you might consider the following categories as nonessential:</p>
-<pre><code>##                                    Item Amount
-## 1                   Food away from home   3365
-## 2                   Alcoholic beverages    558
-## 3                         Entertainment   3203
-## 4   Personal care products and services    762
-## 5                               Reading    110
-## 6 Tobacco products and smoking supplies    332
-## 7                         Contributions   1873</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Item
+</th>
+<th style="text-align:right;">
+Amount
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Food away from home
+</td>
+<td style="text-align:right;">
+3365
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alcoholic beverages
+</td>
+<td style="text-align:right;">
+558
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Entertainment
+</td>
+<td style="text-align:right;">
+3203
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Personal care products and services
+</td>
+<td style="text-align:right;">
+762
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Reading
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tobacco products and smoking supplies
+</td>
+<td style="text-align:right;">
+332
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Contributions
+</td>
+<td style="text-align:right;">
+1873
+</td>
+</tr>
+</tbody>
+</table>
 <p>For a total of $10,203 which is a lot less than the above $18,000.</p>
 </div>
