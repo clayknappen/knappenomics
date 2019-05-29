@@ -33,6 +33,7 @@ df = data.frame(Item = c("Restaurant meals", "Drinks", "Takeout/delivery", "Buyi
                          "Coffee", "Bottled water"), 
                 cost = c(209.38, 188.68, 177.88, 173.62, 108.97, 96.11, 94.25, 93.96, 90.57, 84.11, 72.53, 23.24,
                          23.09, 22.41, 20.25, 17.47))
+df$cost = scales::dollar(df$cost)
 kable(df) %>%
   kable_styling(bootstrap_options = "striped", full_width = F)
 ```
@@ -44,6 +45,8 @@ A subtler, problem is that these numbers may be the average of those who reporte
 ```{r, echo=FALSE}
 df = data.frame(Friend = c("Song", "James", "Kerstie", "Reggy", "Tom"), 
                 Amount = c(40, 0, 0, 55, 24))
+
+df$Amount = scales::dollar(df$Amount)
 kable(df) %>%
   kable_styling(bootstrap_options = "striped", full_width = F)
 ```
@@ -63,7 +66,7 @@ Again, without more detail on the survey, I can't say for certain that this is w
 ## Grievance, the second - there was better data all along
 To be clear, I don't see a lot of benefit to arbitrarily classifying some spending as "essential" or "nonessential." As many have already pointed out, the discussion often ends up being discriminatory toward people at the bottom of the income distribution. When a high profile CEO buys lunch, no one blinks, but when a minimum wage fast food worker does the same thing it's seen as wasteful and irresponsible.  
 
-But at the same time, if you are genuinely interested in exploring how much people spend on essentials vs nonessentials, you don't have to look any farther than the Bureau of Labor Statistics to find data that is both higher quality and better documented. Plus, you don't have to worry about someone trying to sell you life insurance. [The Consumer Expenditure Surveys](www.bls.gov/cex) provide tables and public-use microdata on expenditures, income, and demographics for the United States going back to 1989. You will have to do a little bit more work, including defining what nonessential expenditures are, but the end result is certainly more credible than what's been floating around the internet. 
+But at the same time, if you are genuinely interested in exploring how much people spend on essentials vs nonessentials, you don't have to look any farther than the Bureau of Labor Statistics to find data that is both higher quality and better documented. Plus, you don't have to worry about someone trying to sell you life insurance. [The Consumer Expenditure Surveys](https://www.bls.gov/cex) provide tables and public-use microdata on expenditures, income, and demographics for the United States going back to 1989. You will have to do a little bit more work, including defining what nonessential expenditures are, but the end result is certainly more credible than what's been floating around the internet. 
 
 A good place to start then is this [2017 average expenditures table](https://www.bls.gov/cex/2017/combined/age.pdf) broken down by the age of the reference person. It's already in annual amounts so we can just add up the categories that we consider to be nonessential. As a first pass, you might consider the following categories as nonessential:
 
@@ -72,6 +75,8 @@ df = data.frame(Item = c("Food away from home", "Alcoholic beverages", "Entertai
                          "Personal care products and services", "Reading", 
                          "Tobacco products and smoking supplies", "Contributions"), 
                 Amount = c(3365, 558, 3203, 762, 110, 332, 1873))
+
+df$Amount = scales::dollar(df$Amount)
 kable(df) %>%
   kable_styling(bootstrap_options = "striped", full_width = F)
 ```

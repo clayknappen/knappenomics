@@ -70,8 +70,7 @@ links = data.frame(source = c(0, 1, 1, 1, 0, 5, 5, 5, 5, 5, 0, 11, 11, 11, 11, 1
 sankeyNetwork(Links = links, Nodes = nodes, Source = "source",
               Target = "target", Value = "value", NodeID = "name",
               NodeGroup = "group", LinkGroup = "group",
-              fontSize = 12, nodeWidth = 30, 
-              height=800, width=1000)
+              fontSize = 12, nodeWidth = 30)
 ```
 
 The Sankey diagram was created using the very helpful R package [networkD3](https://christophergandrud.github.io/networkD3/)
